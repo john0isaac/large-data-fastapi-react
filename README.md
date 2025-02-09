@@ -6,18 +6,28 @@ A simple example of a FastAPI backend with a React frontend that can handle larg
 
 - Create a virtual environment
 
-```bash
-python3 -m venv .venv
-```
+    ```bash
+    python3 -m venv .venv
+    ```
 
 - Activate the virtual environment
 
-```bash
-source .venv/bin/activate
-```
+    ```bash
+    # On Unix or MacOS
+    source .venv/bin/activate
 
-- Install the dependencies
+    # On Windows
+    .venv\Scripts\activate
+    ```
 
-```bash
-pip install -r requirements.txt
-```
+- Install the development dependencies
+
+    ```bash
+    pip install -e 'src[dev]'
+    ```
+
+- Run the FastAPI backend
+
+    ```bash
+    uvicorn src.large_data_api.main:create_app --factory --reload
+    ```
