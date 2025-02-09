@@ -1,0 +1,33 @@
+[project]
+name = "large-data-api"
+description= "A sample for testing react and fastapi with large data."
+version = "0.1.0"
+authors = [{ name = "John Aziz", email = "johnaziz269@gmail.com" }]
+maintainers = [{ name = "John Aziz", email = "johnaziz269@gmail.com" }]
+license = {file = "LICENSE"}
+readme = "README.md"
+
+requires-python = ">=3.10"
+dependencies = [
+    "fastapi",
+    "sqlmodel",
+    "uvicorn",
+    "python-dotenv",
+]
+
+[project.optional-dependencies]
+dev = [
+    "pre-commit",
+    "mypy",
+]
+lint = [
+    "ruff"
+]
+test = [
+    "pytest",
+    "pytest-cov"
+]
+
+[build-system]
+requires = ["setuptools", "wheel"]
+build-backend = "setuptools.build_meta"
