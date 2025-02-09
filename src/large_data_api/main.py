@@ -38,9 +38,10 @@ def create_app():
 
     app = FastAPI(title="Large Data API", lifespan=lifespan)
 
-    from large_data_api.routers import data
+    from large_data_api.routers import data, files
 
     app.include_router(data.router)
+    app.include_router(files.router)
 
     app.add_middleware(
         CORSMiddleware,

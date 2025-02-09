@@ -19,7 +19,7 @@ logger = logging.getLogger()
 router = APIRouter()
 
 
-@router.get("/data", response_model=list[Data])
+@router.get("/data", response_model=list[Data], tags=["data"])
 async def get_data(session: DBSession):
     logging.info("Getting data")
     try:
@@ -30,12 +30,20 @@ async def get_data(session: DBSession):
     return data
 
 
-@router.get("/data/populate/{file_name}", response_model=CreateResponse)
+@router.get("/data/populate/{file_name}", response_model=CreateResponse, tags=["data"])
 async def populate_data(session: DBSession, file_name: str = "10k_random_data.json"):
     logging.info("Populating data")
     raw_data = load_data_from_file(CURRENT_DIR.parent / "data" / file_name)
     try:
         # Cleanup existing data
+        try:
+            results = session.exec(select(Data)).all()
+            for result in results:
+                session.delete(result)
+            session.commit()
+        except SQLAlchemyError:
+            session.rollback()
+        # Populate data
         for data in raw_data:
             session.add(Data(**data))
         session.commit()
