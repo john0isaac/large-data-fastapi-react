@@ -2,6 +2,8 @@
 
 A simple example of a FastAPI backend with a React frontend that can handle large data.
 
+![Screenshot of the App]()
+
 ## Installation
 
 1. Create a virtual environment
@@ -30,4 +32,17 @@ A simple example of a FastAPI backend with a React frontend that can handle larg
 
     ```bash
     uvicorn src.large_data_api.main:create_app --factory --reload
+    ```
+
+1. Install the frontend dependencies
+
+    ```bash
+    cd frontend
+    yarn install
+    ```
+
+1. Run the React frontend
+
+    ```bash
+    yarn start
     ```
