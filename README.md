@@ -2,7 +2,7 @@
 
 A simple example of a FastAPI backend with a React frontend that can handle large data.
 
-![Screenshot of the App]()
+![Screenshot of the App](https://github.com/user-attachments/assets/3134f59a-8657-4455-bdba-f49e9e152dfc)
 
 ## Installation
 
